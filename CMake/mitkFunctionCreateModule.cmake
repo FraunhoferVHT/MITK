@@ -341,7 +341,7 @@ function(mitk_create_module)
 
     if(MODULE_WARNINGS_AS_ERRORS)
       if(MSVC_VERSION)
-        mitkFunctionCheckCAndCXXCompilerFlags("/WX" module_c_flags module_cxx_flags)
+        mitkFunctionCheckCAndCXXCompilerFlags("/W3" module_c_flags module_cxx_flags)
       else()
         mitkFunctionCheckCAndCXXCompilerFlags(-Werror module_c_flags module_cxx_flags)
 
