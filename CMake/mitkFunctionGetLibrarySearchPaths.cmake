@@ -8,6 +8,9 @@ endmacro()
 function(mitkFunctionGetLibrarySearchPaths search_path intermediate_dir)
 
   set(_dir_candidates
+	  "${VTK_DIR}/bin"
+	  "${GDCM_DIR}/bin"
+	  "${ITK_DIR}/bin"
       "${MITK_CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
       "${MITK_CMAKE_RUNTIME_OUTPUT_DIRECTORY}/plugins"
       "${MITK_CMAKE_LIBRARY_OUTPUT_DIRECTORY}"
@@ -84,7 +87,6 @@ function(mitkFunctionGetLibrarySearchPaths search_path intermediate_dir)
     if(SOFA_DIR)
       list(APPEND _dir_candidates "${SOFA_DIR}/bin")
     endif()
-    list(APPEND _dir_candidates "${ITK_DIR}/bin")
   else()
     if(SOFA_DIR)
       list(APPEND _dir_candidates "${SOFA_DIR}/lib")
