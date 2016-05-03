@@ -81,12 +81,12 @@ mitk::Image::Image(const Image &other) : SlicedData(other), m_Dimension(0), m_Di
 mitk::Image::~Image()
 {
   Clear();
-  m_ReferenceCountLock.Lock();
+//  m_ReferenceCountLock.Lock();
   m_ReferenceCount = 3;
-  m_ReferenceCountLock.Unlock();
-  m_ReferenceCountLock.Lock();
+//  m_ReferenceCountLock.Unlock();
+//  m_ReferenceCountLock.Lock();
   m_ReferenceCount = 0;
-  m_ReferenceCountLock.Unlock();
+//  m_ReferenceCountLock.Unlock();
   if(m_OffsetTable != nullptr)
     delete [] m_OffsetTable;
 

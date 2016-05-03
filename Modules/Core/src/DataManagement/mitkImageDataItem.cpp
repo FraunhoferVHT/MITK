@@ -67,9 +67,9 @@ mitk::ImageDataItem::ImageDataItem(const ImageDataItem& aParent, const mitk::Ima
       delete [] (unsigned char*) data;
     }
   }
-  m_ReferenceCountLock.Lock();
+//  m_ReferenceCountLock.Lock();
   m_ReferenceCount = 0;
-  m_ReferenceCountLock.Unlock();
+//  m_ReferenceCountLock.Unlock();
 }
 
 mitk::ImageDataItem::~ImageDataItem()
@@ -127,9 +127,9 @@ mitk::ImageDataItem::ImageDataItem(const mitk::ImageDescriptor::Pointer desc, in
     m_ManageMemory = true;
   }
 
-  m_ReferenceCountLock.Lock();
+//  m_ReferenceCountLock.Lock();
   m_ReferenceCount = 0;
-  m_ReferenceCountLock.Unlock();
+//  m_ReferenceCountLock.Unlock();
 
 }
 
@@ -162,9 +162,9 @@ mitk::ImageDataItem::ImageDataItem(const mitk::PixelType& type, int timestep,
     m_ManageMemory = true;
   }
 
-  m_ReferenceCountLock.Lock();
+//  m_ReferenceCountLock.Lock();
   m_ReferenceCount = 0;
-  m_ReferenceCountLock.Unlock();
+//  m_ReferenceCountLock.Unlock();
 }
 
 mitk::ImageDataItem::ImageDataItem(const ImageDataItem &other)
