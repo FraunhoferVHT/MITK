@@ -1361,11 +1361,23 @@ if(WIN32)
     list(APPEND MITK_LIBRARY_DIRS ${HDF5_DIR}/install/bin)
     message(STATUS "MITK-Runtime " ${MITK_RUNTIME_PATH})
   endif(MITK_USE_HDF5)
-  foreach(VS_BUILD_TYPE debug release)
-    mitkFunctionCreateWindowsBatchScript("${MITK_SOURCE_DIR}/CMake/StartVS.bat.in"
-      ${PROJECT_BINARY_DIR}/StartVS_${VS_BUILD_TYPE}.bat
-      ${VS_BUILD_TYPE})
-  endforeach()
+  # foreach(VS_BUILD_TYPE debug release)
+    # mitkFunctionCreateWindowsBatchScript("${MITK_SOURCE_DIR}/CMake/StartVS.bat.in"
+      # ${PROJECT_BINARY_DIR}/StartVS_${VS_BUILD_TYPE}.bat
+      # ${VS_BUILD_TYPE})
+  # endforeach()
+  
+set(VS_SOLUTION_FILE "${PROJECT_BINARY_DIR}/${PROJECT_NAME}.sln")
+CONFIGURE_FILE("${PROJECT_SOURCE_DIR}/CMake/StartVS.bat.in" ${PROJECT_BINARY_DIR}/StartVS.bat @ONLY) 
+SET(VS_BUILD_TYPE_DEB debug)
+SET(VS_BUILD_TYPE_REL release)
+SET(VS_BUILD_TYPE_RELDEB relwithdebinfo)  
+mitkFunctionGetLibrarySearchPaths(MITK_RUNTIME_PATH_DEB ${VS_BUILD_TYPE_DEB})
+mitkFunctionGetLibrarySearchPaths(MITK_RUNTIME_PATH_REL ${VS_BUILD_TYPE_REL})
+mitkFunctionGetLibrarySearchPaths(MITK_RUNTIME_PATH_RELDEB ${VS_BUILD_TYPE_RELDEB})
+CONFIGURE_FILE("${PROJECT_SOURCE_DIR}/CMake/MITK.vcxproj.user.in" ${PROJECT_BINARY_DIR}/Applications/Workbench/MitkWorkbench.vcxproj.user @ONLY)
+  
+  
 endif(WIN32)
 
 
